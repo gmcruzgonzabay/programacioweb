@@ -1,5 +1,22 @@
 
 let contador = 0;
+let nombre="Tony Start";
+let edad=25;
+
+//Consolelog para revisar código en ciertas lineas
+
+console.log("JavaScript Cargado");
+console.log(10);
+console.log(5+3);
+console.log("Hola "+ nombre);
+console.log(edad);
+
+//Errores con console.log
+console.log("Hola esto es un error");
+
+
+
+
 
 function mostrarMensaje() {
 
