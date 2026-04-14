@@ -60,6 +60,13 @@ document.getElementById("clase").addEventListener("click", () => {
 
     //resultado.innerText=persona.esMayorEdad();
 
+    //LIMPIAMOS LOS inputs 
+
+    inputNombre.value="";
+    inputCorreo.value="";
+    inputPassword.value="";
+    inputEdad.value="";
+
 
 
     // const persona = new Persona("Ana", 25);
