@@ -20,10 +20,17 @@ document.addEventListener("DOMContentLoaded", function () {
             this.edad = edad;
         }
         info() {
-            return `Nombre:${this.nombre},
-        Correo: ${this.correo},
+            //toLowerCase me transforma el texto en minúsculas
+            //toUpperCase me transforma el texto en Mayúsculas
+
+            return `Nombre:${this.nombre.toLowerCase()},
+        Correo: ${this.correo.toUpperCase()},
         password: ${this.password},
         Edad: ${this.edad}`;
+        }
+
+        esMayorEdad(){
+            return this.edad>=18 ?  'Es Mayor de edad' : 'Es menor de edad' //Operador ternario, o un if corto
         }
     }
 
@@ -31,12 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
-})
-
-
 document.getElementById("clase").addEventListener("click", () => {
-    const nombre = inputNombre.value.trim();
+    const nombre = inputNombre.value.trim(); //Capturamos los datos del input y eliminamos espacios con trim()
     const correo = inputCorreo.value.trim();
     const password = inputPassword.value.trim();
     const edad = inputEdad.value.trim();
@@ -44,13 +47,18 @@ document.getElementById("clase").addEventListener("click", () => {
     if (nombre === "" || correo === "" || password === "" || edad === "") {
         resultado.innerText = "Todos los campos son  obligatorio";
         resultado.style.color = "red";
+        console.log("Línea antes del return");
         return;
+        console.log("Codigo despues del return"); //Esta linea no se ejecuta porque el return hace que se salga de la función
     }
 
     //Crear objeto usando la clase
     const persona= new Persona(nombre,correo,password,edad);
     // Mostrar información
+    
     resultado.innerText=persona.info();
+
+    //resultado.innerText=persona.esMayorEdad();
 
 
 
@@ -58,6 +66,10 @@ document.getElementById("clase").addEventListener("click", () => {
     // document.getElementById("resultado").innerText = persona.info();
 
 });
+
+
+
+})
 
 
 
