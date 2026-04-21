@@ -60,6 +60,33 @@ $(function () {
 
 
     // Login del usuario
+    $("#btnLogin").click(function(){
+
+        let correo= $("#loginCorreo").val();
+        let password=$("#loginPassword").val();
+
+        mostrarMensaje("Validando....","warning");
+
+        //Acceder a localStorage
+
+        let usuario=JSON.parse(localStorage.getItem("usuario"));
+
+        if(!usuario){
+            mostrarMensaje("Usuario no existe","danger");
+            return;
+        }
+        if(correo === usuario.correo && password=== usuario.password)
+        {
+            window.location.href="../dashboard.html";
+
+        }
+        else
+        {
+            mostrarMensaje("Credenciales incorrectas","danger");
+        }
+
+
+    });
 
 
     //Mostrar mensaje
