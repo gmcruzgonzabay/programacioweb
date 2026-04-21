@@ -1,60 +1,105 @@
 console.log("Archivo de promesa cargado correctamente....");
 
+function loginUsuarioPromesa(correo,password){
+
+return new Promise((resolve,reject)=>{
+setTimeout(()=>{
+        let usuario=JSON.parse(localStorage.getItem("usuario"));
+
+        if(!usuario){
+            reject("Usuario no existe");
+            return;
+        }
+
+        if(correo===usuario.correo && password=== usuario.password){
+            resolve(usuario);
+        }
+        else
+        {
+            reject("Credenciales Incorrectas");
+        }
+
+},2000); //Simula el tiempo de consulta al servidor
+
+});
+
+} // Fin de loginUsuarioPromesa
 
 
+$("#btnLoginPromesa").click(function(){
 
+    let correo= $("#loginCorreo").val();
+    let password=$("#loginPassword").val();
+    $("#mensaje").text("Validando.....");
 
+    loginUsuarioPromesa(correo,password).then(function(usuario){
+        $("#mensaje").text("Login correcto....");
+        console.log("Usuario:",usuario);
 
-function ejemploPromesa(){
+        setTimeout(()=>{
+            window.location.href="../dashboard.html";
+        },1000 );
 
-    return new Promise((resolve,reject)=>{
-
-  setTimeout(()=>{
-
-    let error=true;
-
-    if(error){
-
-        reject("proceso con error... intenta más tarde");
-    }
-    else
-    {
-
-        resolve("Proceso con éxito");
-    }
-
-        console.log("Esto se ejecuta después (Tarea asíncrona)");
-        //resolve("Terminé la tarea...");
-
-    },2000);
     });
+
+});
+
+
+
+
+
+
+
+// function ejemploPromesa(){
+
+//     return new Promise((resolve,reject)=>{
+
+//   setTimeout(()=>{
+
+//     let error=true;
+
+//     if(error){
+
+//         reject("proceso con error... intenta más tarde");
+//     }
+//     else
+//     {
+
+//         resolve("Proceso con éxito");
+//     }
+
+//         console.log("Esto se ejecuta después (Tarea asíncrona)");
+//         //resolve("Terminé la tarea...");
+
+//     },2000);
+//     });
   
 
- } ;
+//  } ;
 
 
-async function ejecutar(){
-console.log("inicio del programa");
+// async function ejecutar(){
+// console.log("inicio del programa");
 
-try{
-    let respuest=await ejemploPromesa();
+// try{
+//     let respuest=await ejemploPromesa();
 
 
-}
-catch(error){
-    console.error("ERROR",error);
+// }
+// catch(error){
+//     console.error("ERROR",error);
 
-}
+// }
 
-// ejemploPromesa().then((respuesta)=>{
-//     console.log(respuesta);
-// });
+// // ejemploPromesa().then((respuesta)=>{
+// //     console.log(respuesta);
+// // });
 
-console.log("Fin del programa");
+// console.log("Fin del programa");
 
-}
+// }
 
-ejecutar();
+// ejecutar();
 
 
 
