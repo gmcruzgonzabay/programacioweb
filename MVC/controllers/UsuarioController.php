@@ -21,6 +21,7 @@ public function index():void{
 
 } //fin del método index
 
+public 
 
 
 // Método para guardar un nuevo usuario
@@ -46,6 +47,8 @@ public function guardar():void{
     } 
 
 }
+
+functio
 
 public function editar():void{
     // Lógica para mostrar el formulario de edición con los datos del usuario   

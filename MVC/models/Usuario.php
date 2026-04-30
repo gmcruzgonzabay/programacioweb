@@ -29,11 +29,34 @@ retutn $stmt->execute([
 
 }
 
+
+//función para eliminar un usuario por su ID
 public function delete(int $id):bool{
     $stmt = $this->db->prepare("DELETE FROM usuarios WHERE id = :id");
     return $stmt->execute([':id' => $id]);
 }   
 
+
+//Función para actualizar un usuario existente
+function update(int $id, array $data):bool
+{
+    $stmt = $this->db->prepare("UPDATE usuarios SET nombre = :nombre, correo = :correo, rol = :rol, estado = :estado WHERE id = :id");
+    return $stmt->execute([
+        ':id' => $id,
+        ':nombre' => $data['nombre'],
+        ':correo' => $data['correo'],
+        ':rol' => $data['rol'],
+        ':estado' => $data['estado']
+    ]);
+}
+
+
+
+
+
+
+
+}
 
 
 
